@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import ExpenseTracker from './components/ExpenseTracker';
 import './components/ExpenseTracker.css';
+import './components/TransactionForm.css';
 
 function App() {
   return (

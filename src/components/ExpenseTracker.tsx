@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import TransactionForm from './TransactionForm';
 
 interface Transaction {
   id: number;
@@ -10,6 +11,7 @@ interface Transaction {
 
 const ExpenseTracker: React.FC = () => {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
+  const [nextId, setNextId] = useState(4);
 
   const sampleTransactions: Transaction[] = [
     { id: 1, amount: 2500, description: 'Salary', type: 'income', date: '2025-02-15' },
@@ -20,6 +22,15 @@ const ExpenseTracker: React.FC = () => {
   React.useEffect(() => {
     setTransactions(sampleTransactions);
   }, []);
+
+  const handleAddTransaction = (newTransaction: Omit<Transaction, 'id'>) => {
+    const transaction: Transaction = {
+      ...newTransaction,
+      id: nextId
+    };
+    setTransactions(prev => [transaction, ...prev]);
+    setNextId(prev => prev + 1);
+  };
 
   const totalIncome = transactions
     .filter(t => t.type === 'income')
@@ -34,6 +45,8 @@ const ExpenseTracker: React.FC = () => {
   return (
     <div className="expense-tracker">
       <h2>Financial Overview</h2>
+
+      <TransactionForm onAddTransaction={handleAddTransaction} />
 
       <div className="summary">
         <div className="summary-item income">
