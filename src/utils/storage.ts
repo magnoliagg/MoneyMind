@@ -3,6 +3,7 @@ interface Transaction {
   amount: number;
   description: string;
   type: 'income' | 'expense';
+  category: string;
   date: string;
 }
 

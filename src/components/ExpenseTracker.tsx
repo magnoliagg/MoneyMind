@@ -7,6 +7,7 @@ interface Transaction {
   amount: number;
   description: string;
   type: 'income' | 'expense';
+  category: string;
   date: string;
 }
 
@@ -19,9 +20,9 @@ const ExpenseTracker: React.FC = () => {
       setTransactions(savedTransactions);
     } else {
       const sampleTransactions: Transaction[] = [
-        { id: 1, amount: 2500, description: 'Salary', type: 'income', date: '2025-02-15' },
-        { id: 2, amount: 50, description: 'Groceries', type: 'expense', date: '2025-02-16' },
-        { id: 3, amount: 120, description: 'Gas', type: 'expense', date: '2025-02-17' }
+        { id: 1, amount: 2500, description: 'Salary', type: 'income', category: 'Salary', date: '2025-02-15' },
+        { id: 2, amount: 50, description: 'Groceries', type: 'expense', category: 'Food & Dining', date: '2025-02-16' },
+        { id: 3, amount: 120, description: 'Gas', type: 'expense', category: 'Transportation', date: '2025-02-17' }
       ];
       setTransactions(sampleTransactions);
       saveTransactions(sampleTransactions);
@@ -79,7 +80,10 @@ const ExpenseTracker: React.FC = () => {
           <ul>
             {transactions.map(transaction => (
               <li key={transaction.id} className={`transaction ${transaction.type}`}>
-                <span className="description">{transaction.description}</span>
+                <div className="transaction-info">
+                  <span className="description">{transaction.description}</span>
+                  <span className="category">{transaction.category}</span>
+                </div>
                 <span className="amount">
                   {transaction.type === 'income' ? '+' : '-'}${transaction.amount.toFixed(2)}
                 </span>

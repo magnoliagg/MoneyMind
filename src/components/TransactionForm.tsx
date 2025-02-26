@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { EXPENSE_CATEGORIES, INCOME_CATEGORIES } from '../utils/categories';
 
 interface TransactionFormProps {
   onAddTransaction: (transaction: {
     amount: number;
     description: string;
     type: 'income' | 'expense';
+    category: string;
     date: string;
   }) => void;
 }
@@ -13,7 +15,14 @@ const TransactionForm: React.FC<TransactionFormProps> = ({ onAddTransaction }) =
   const [amount, setAmount] = useState('');
   const [description, setDescription] = useState('');
   const [type, setType] = useState<'income' | 'expense'>('expense');
+  const [category, setCategory] = useState('');
   const [date, setDate] = useState(new Date().toISOString().split('T')[0]);
+
+  const categories = type === 'income' ? INCOME_CATEGORIES : EXPENSE_CATEGORIES;
+
+  React.useEffect(() => {
+    setCategory(categories[0]);
+  }, [type]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -33,12 +42,14 @@ const TransactionForm: React.FC<TransactionFormProps> = ({ onAddTransaction }) =
       amount: numAmount,
       description,
       type,
+      category,
       date
     });
 
     setAmount('');
     setDescription('');
     setType('expense');
+    setCategory(EXPENSE_CATEGORIES[0]);
     setDate(new Date().toISOString().split('T')[0]);
   };
 
@@ -80,6 +91,19 @@ const TransactionForm: React.FC<TransactionFormProps> = ({ onAddTransaction }) =
             onChange={(e) => setDescription(e.target.value)}
             placeholder="What was this for?"
           />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="category">Category:</label>
+          <select
+            id="category"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          >
+            {categories.map(cat => (
+              <option key={cat} value={cat}>{cat}</option>
+            ))}
+          </select>
         </div>
 
         <div className="form-group">

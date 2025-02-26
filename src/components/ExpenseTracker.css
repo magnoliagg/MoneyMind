@@ -77,8 +77,21 @@
   border-left-color: #f44336;
 }
 
+.transaction-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
 .transaction .description {
   font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.transaction .category {
+  font-size: 0.85rem;
+  color: #666;
+  font-style: italic;
 }
 
 .transaction .amount {
