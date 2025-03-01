@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import TransactionForm from './TransactionForm';
+import MonthlyStats from './MonthlyStats';
 import { saveTransactions, loadTransactions, getNextId } from '../utils/storage';
 
 interface Transaction {
@@ -54,6 +55,8 @@ const ExpenseTracker: React.FC = () => {
       <h2>Financial Overview</h2>
 
       <TransactionForm onAddTransaction={handleAddTransaction} />
+
+      <MonthlyStats transactions={transactions} />
 
       <div className="summary">
         <div className="summary-item income">

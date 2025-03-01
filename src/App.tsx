@@ -3,6 +3,7 @@ import './App.css';
 import ExpenseTracker from './components/ExpenseTracker';
 import './components/ExpenseTracker.css';
 import './components/TransactionForm.css';
+import './components/MonthlyStats.css';
 
 function App() {
   return (

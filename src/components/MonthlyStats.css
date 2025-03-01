@@ -1,0 +1,101 @@
+.monthly-stats {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.monthly-stats h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+.monthly-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+  border-radius: 6px;
+  background-color: #f8f9fa;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.stat-value {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.stat-value.income {
+  color: #4caf50;
+}
+
+.stat-value.expense {
+  color: #f44336;
+}
+
+.stat-value.positive {
+  color: #4caf50;
+}
+
+.stat-value.negative {
+  color: #f44336;
+}
+
+.top-categories {
+  margin-bottom: 20px;
+}
+
+.top-categories h4 {
+  margin-bottom: 15px;
+  color: #555;
+}
+
+.top-categories ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.top-categories li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.top-categories li:last-child {
+  border-bottom: none;
+}
+
+.category-name {
+  font-weight: 500;
+}
+
+.category-amount {
+  font-weight: bold;
+  color: #f44336;
+}
+
+.transaction-count {
+  text-align: center;
+  color: #888;
+  font-size: 0.9rem;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
