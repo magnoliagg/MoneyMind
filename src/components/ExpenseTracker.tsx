@@ -40,6 +40,12 @@ const ExpenseTracker: React.FC = () => {
     saveTransactions(updatedTransactions);
   };
 
+  const handleDeleteTransaction = (id: number) => {
+    const updatedTransactions = transactions.filter(t => t.id !== id);
+    setTransactions(updatedTransactions);
+    saveTransactions(updatedTransactions);
+  };
+
   const totalIncome = transactions
     .filter(t => t.type === 'income')
     .reduce((sum, t) => sum + t.amount, 0);
@@ -91,6 +97,13 @@ const ExpenseTracker: React.FC = () => {
                   {transaction.type === 'income' ? '+' : '-'}${transaction.amount.toFixed(2)}
                 </span>
                 <span className="date">{transaction.date}</span>
+                <button
+                  className="delete-btn"
+                  onClick={() => handleDeleteTransaction(transaction.id)}
+                  title="Delete transaction"
+                >
+                  ✕
+                </button>
               </li>
             ))}
           </ul>
