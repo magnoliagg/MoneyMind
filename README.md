@@ -5,10 +5,13 @@ A simple personal finance tracker built with React and TypeScript.
 ## Features
 
 - ✅ Track income and expenses
-- ✅ Categorize transactions
+- ✅ Categorize transactions with predefined categories
 - ✅ Monthly statistics and summaries
+- ✅ Top spending categories analysis
+- ✅ Delete transactions with one click
 - ✅ Local storage persistence
 - ✅ Real-time balance calculation
+- ✅ Responsive design for all devices
 
 ## Getting Started
 
